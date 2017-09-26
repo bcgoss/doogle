@@ -1,0 +1,8 @@
+<h1>Doogle</h1>
+<%= form_with(model: @entry, url: searches_path) do |f| %>
+  <%= f.text_field :word %>
+  <%= f.submit 'Doogle Search' %>
+<% end %>
+<div id="definitions">
+
+</div>

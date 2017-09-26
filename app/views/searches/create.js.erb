@@ -1,0 +1,4 @@
+$("#definitions").html(
+    "<ul> <% @entry.definitions.each do |definition| %>" +
+      "<li><%= definition.text %></li>" +
+      "<% end %></ul");
