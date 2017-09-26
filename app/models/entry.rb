@@ -1,5 +1,6 @@
 class Entry < ApplicationRecord
-  has_many :definitions
+  has_many :entries_definitions
+  has_many :definitions, through: :entries_definitions
   validates :word, presence: true, uniqueness: {case_sensitive: false}
   before_validation :downcase_word
 
@@ -7,8 +8,8 @@ class Entry < ApplicationRecord
     word.downcase!
   end
 
-  def self.lookup(word: nil)
-    result = find_by(word: word)
+  def self.lookup(word: '')
+    result = find_by(word: word.downcase)
     unless result
       result = create_from_dictionary(DictionaryService.lookup(word))
     end

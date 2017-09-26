@@ -1,9 +1,10 @@
 class Definition < ApplicationRecord
-  belongs_to :entry
+  has_many :entries_definitions
+  has_many :entries, through: :entries_definitions
 
   class NullDefinition
     def text
-      'Word not found'
+      'No definition found'
     end
 
     def entry
