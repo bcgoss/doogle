@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170926181158) do
+ActiveRecord::Schema.define(version: 20170926215627) do
 
   create_table "definitions", force: :cascade do |t|
     t.string "text"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 20170926181158) do
     t.datetime "updated_at", null: false
     t.index ["definition_id"], name: "index_entries_definitions_on_definition_id"
     t.index ["entry_id"], name: "index_entries_definitions_on_entry_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.integer "role", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

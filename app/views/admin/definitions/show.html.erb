@@ -1,0 +1,9 @@
+<h2><%= @definition.text %></h2>
+<%= link_to 'Edit', edit_admin_definition_path(@definition.id) %>
+<%= link_to 'Delete', admin_definition_path(@definition.id), method: :delete %>
+<h3>Words using this definition: </h3>
+<ul>
+  <%= @definition.entries.each do |entry| %>
+    <li><%= entry.word %> </li>
+    <% end %>
+</ul>

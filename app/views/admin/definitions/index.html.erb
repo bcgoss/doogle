@@ -1,0 +1,6 @@
+<h2>Definitions</h2>
+<ul>
+  <% @definitions.each do |definition| %>
+    <li><%= link_to definition.text, admin_definition_path(definition.id) %></li>
+  <% end %>
+</ul>

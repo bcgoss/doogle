@@ -1,0 +1,10 @@
+<div class="nav navbar">
+  <div class="nav-item active">
+    <% if current_user %>
+      <%= link_to('Admin', '/admin', class: 'nav-link') if current_user.admin? %>
+      <%= link_to 'Log out', logout_path, class: 'nav-link navbar-right' %>
+    <% else %>
+      <%= link_to 'Log in', login_path, class: 'nav-link navbar-right' %>
+    <% end %>
+  </div>
+</div>

@@ -4,6 +4,7 @@ class SearchesController < ApplicationController
   end
 
   def create
+    # debugger
     @entry = Entry.lookup(word: entry_params[:word])
     respond_to do |format|
       format.js

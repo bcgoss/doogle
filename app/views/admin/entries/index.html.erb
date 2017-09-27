@@ -1,0 +1,6 @@
+<h2>Entries</h2>
+<ul>
+  <% @entries.each do |entry| %>
+    <li><%= link_to entry.word, admin_entry_path(entry.id) %></li>
+  <% end %>
+</ul>
