@@ -12,7 +12,11 @@ RSpec.describe Admin::EntriesController do
 
 
   context 'user' do
-
+    before :each do
+      @user_id = (create :user).id
+      sign_in @user_id
+    end
+    include_examples 'controlls access', :entry, :missing
   end
 
   context 'admin' do

@@ -11,7 +11,11 @@ RSpec.describe Admin::DefinitionsController do
   end
 
   context 'user' do
-
+    before :each do
+      @user_id = (create :user).id
+      sign_in @user_id
+    end
+    include_examples 'controlls access', :definition, :missing
   end
 
   context 'admin' do

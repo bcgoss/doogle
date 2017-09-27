@@ -15,7 +15,6 @@ RSpec.describe SearchesController do
   end
 
   context 'user' do
-
     before(:each) do
       @user = create :user
       sign_in @user
