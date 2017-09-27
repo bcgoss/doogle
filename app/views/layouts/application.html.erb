@@ -9,6 +9,11 @@
   </head>
 
   <body>
+  <%= render 'shared/nav_bar' %>
+
+  <% flash.each do |status, message| %>
+    <div class="alert alert-<%= status %>"><%= message %></div>
+  <% end %>
 
   <h1>Doogle</h1>
   <%= yield %>

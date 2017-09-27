@@ -13,7 +13,7 @@ RSpec.feature 'Search' do
     click_on 'Doogle Search'
     # Then I see a list of definitions
     expect(current_path).to eq root_path
-    within("div") do
+    within("div#definitions") do
       expect(page).to have_content 'something that is said'
     end
   end
@@ -25,7 +25,7 @@ RSpec.feature 'Search' do
     click_on 'Doogle Search'
     # Then I see a list of definitions
     expect(current_path).to eq root_path
-    within("div") do
+    within("div#definitions") do
       expect(page).to have_content 'something that is said'
     end
   end
@@ -37,7 +37,7 @@ RSpec.feature 'Search' do
     click_on 'Doogle Search'
     # Then I see a list of definitions
     expect(current_path).to eq root_path
-    within("div") do
+    within("div#definitions") do
       expect(page).to have_content 'No definition found'
     end
   end

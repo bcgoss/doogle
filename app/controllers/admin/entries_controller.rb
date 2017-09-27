@@ -1,4 +1,6 @@
 class Admin::EntriesController < Admin::AdminController
+  before_action :is_admin?
+
   def index
     @entries = Entry.all
   end

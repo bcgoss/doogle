@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Admins' do
+  before :each do
+    @admin = create :admin
+    sign_in @admin
+  end
   context 'entries' do
     it 'can view all known words' do
       create :entry, word: 'stuff'

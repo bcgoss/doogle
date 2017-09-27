@@ -1,4 +1,6 @@
 class Admin::DefinitionsController < Admin::AdminController
+  before_action :is_admin?
+
   def index
     @definitions = Definition.all
   end
