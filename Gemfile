@@ -41,6 +41,12 @@ gem 'nokogiri'
 
 gem 'jquery-rails'
 
+gem 'devise'
+gem 'sendgrid-ruby'
+gem 'rails_admin'
+
+gem 'bootstrap'
+
 group :production do
   gem 'pg'
 end

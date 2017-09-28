@@ -1,4 +1,6 @@
 class Admin::AdminController < ApplicationController
+  before_action :authenticate_user!
+
   helper_method :is_admin?
   def is_admin?
     unless current_user && current_user.admin?

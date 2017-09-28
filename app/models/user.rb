@@ -1,5 +1,8 @@
 class User < ApplicationRecord
-  has_secure_password
-  enum role: [ :registered, :admin]
-  validates :email, uniqueness: true, presence: true
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+  enum role: [:registered, :admin]
 end
