@@ -5,7 +5,7 @@ class Entry < ApplicationRecord
   before_validation :downcase_word
 
   def downcase_word
-    word.downcase!
+    word.downcase! if word
   end
 
   def self.lookup(word: '')
@@ -13,7 +13,6 @@ class Entry < ApplicationRecord
     unless result
       result = create_from_dictionary(DictionaryService.lookup(word))
     end
-
     return result
   end
 
