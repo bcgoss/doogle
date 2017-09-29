@@ -41,6 +41,12 @@ gem 'nokogiri'
 
 gem 'jquery-rails'
 
+gem 'devise'
+gem 'sendgrid-ruby'
+gem 'rails_admin'
+
+gem 'bootstrap'
+
 group :production do
   gem 'pg'
 end
@@ -71,5 +77,9 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :test do
+  gem 'simplecov', require: false
+  gem 'shoulda-matchers'
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

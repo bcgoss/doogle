@@ -41,4 +41,27 @@ RSpec.describe Entry, type: :model do
       expect(subject.definitions.first.text).to eq 'No definition found'
     end
   end
+  describe 'validations' do
+    it { should have_many :definitions }
+    it { should validate_presence_of(:word) }
+    it { should validate_uniqueness_of(:word).ignoring_case_sensitivity }
+
+    it 'converts to lowercase words' do
+      subject = Entry.create(word: 'Word')
+      expect(subject.word).to eq 'word'
+    end
+  end
+
+  describe Entry::NullEntry do
+    it 'has the error text' do
+      subject = Entry::NullEntry.new
+      expect(subject.word).to eq 'Invalid word'
+    end
+
+    it 'is associated with a NullDefinition' do
+      definition = subject.definitions.first
+      expect(definition).to be_a Definition
+      expect(definition.text).to eq 'No definition found'
+    end
+  end
 end

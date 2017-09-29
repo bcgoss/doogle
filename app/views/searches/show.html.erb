@@ -1,7 +1,9 @@
-<%= form_with(model: @entry, url: searches_path) do |f| %>
-  <%= f.text_field :word %>
-  <%= f.submit 'Doogle Search' %>
-<% end %>
+  <div class="text-center">
+    <%= form_with(model: @entry, url: searches_path) do |f| %>
+      <%= f.text_field :word %>
+      <%= f.submit 'Doogle Search' %>
+    <% end %>
+  </div>
 <div id="definitions">
 
 </div>
