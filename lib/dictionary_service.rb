@@ -15,7 +15,7 @@ class DictionaryService
   private
     DICTIONARY_URL = 'http://www.dictionaryapi.com/api/v1/references/collegiate/xml/'
     ENTRY_XPATH = '//ew'
-    DEFINITION_XPATH = 'dt > text()'
+    DEFINITION_XPATH = '//dt'
 
     attr_reader :connection, :word
 
@@ -23,19 +23,23 @@ class DictionaryService
       @response ||= connection.get word, {key: ENV['DictionaryAPIKey']}
     end
 
+    def document(raw_xml)
+      @xml ||= Nokogiri::XML(raw_xml)
+    end
+
     def parse(raw_response)
-      word_list = extract_text(raw_response, ENTRY_XPATH)
+      xml = document(raw_response)
+      word_list = extract_text(xml, ENTRY_XPATH)
 
       return nil if word_list.empty?
-
       word = word_list.first
-      definitions = extract_text(raw_response, DEFINITION_XPATH)
+      definitions = extract_text(xml, DEFINITION_XPATH)
 
       {word: word, definitions: definitions}
     end
 
-    def extract_text(raw_xml, target)
-      cleanup(Nokogiri::XML(raw_xml).search(target).map(&:text))
+    def extract_text(document, target)
+      cleanup(document.search(target).map(&:text))
     end
 
     def cleanup(raw_text)

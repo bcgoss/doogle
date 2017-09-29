@@ -17,7 +17,7 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 
 #API Wrapper class
-require './lib/DictionaryService'
+require './lib/dictionary_service'
 
 module Doogle
   class Application < Rails::Application
