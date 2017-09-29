@@ -10,12 +10,13 @@
 
   <body>
   <%= render 'shared/nav_bar' %>
+  <div class="container">
+    <% flash.each do |status, message| %>
+      <div class="alert alert-<%= status %>"><%= message %></div>
+    <% end %>
 
-  <% flash.each do |status, message| %>
-    <div class="alert alert-<%= status %>"><%= message %></div>
-  <% end %>
-
-  <h1>Doogle</h1>
-  <%= yield %>
+    <h1 class="text-center">Doogle</h1>
+    <%= yield %>
+  </div>
   </body>
 </html>
