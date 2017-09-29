@@ -29,7 +29,7 @@ class Entry < ApplicationRecord
     return new_word
   end
 
-  class NullEntry
+  class NullEntry < Entry
     def word
       'Invalid word'
     end
